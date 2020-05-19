@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<%include  partials/cdn.ejs %>
+    <html>
+
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <h1>THTJ Restuarant</h1>
+        <div class="container ">
+            <table border="1" class="table table-responsive" style="text-align: center;">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Slip Id</th>
+                        <th scope="col">Food</th>
+                        <th scope="col">Add</th>
+                        <th scope="col">amount</th>
+
+                        <th scope="col">Total</th>
+
+                        <th scope="col">Date</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <%= data_bill._id%>
+                        </td>
+                        <td>
+                            <%= data_bill.foodName%>
+                        </td>
+                        <td>
+                            <%= data_bill.addInFood%>
+                        </td>
+                        <td>
+                            <%= data_bill.amount%>
+                        </td>
+                        <td>
+                            <%= data_bill.price%>
+                        </td>
+                        <td>
+                            <%= data_bill.date_ordered%>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+            <div class="container row">
+                <button class="btn btn-danger" id="backfood">Back To Food List</button> &nbsp;
+                <button class="btn btn-success" id="ok">OK</button>
+
+            </div>
+        </div>
+        <script>
+            $(document).ready(() => {
+                $("#backfood").click((event) => {
+                    window.location.href = "/food"
+                })
+            })
+        </script>
+    </body>
+
+    </html>

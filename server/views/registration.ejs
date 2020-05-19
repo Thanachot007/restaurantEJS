@@ -1,0 +1,36 @@
+<html>
+<head>
+    <% include partials/cdn.ejs %> 
+    <style>
+        body{
+           /* background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); */
+           /* background: linear-gradient(90deg, #f8ff00 0%, #3ad59f 100%); */
+           background: linear-gradient(45deg, #757079 0%, #515ada 100%);
+        }
+        a{
+            font-size: 0.75cm;
+        }
+    </style>
+   
+</head>    
+<body>
+        <h1>Registration Form</h1><br>
+        <div class="container">
+        <form action="/registration/savemember" class="form-group" method="post">
+            <input required type="text" class="form-control" name="fname" id="fname" placeholder="fname"><br>
+            <input required type="text" class="form-control" name="lname" id="lname" placeholder="lname"><br>
+            <input required type="text" class="form-control" name="username" id="username" placeholder="username"><br>
+            <input required type="email" class="form-control" name="email" id="email" placeholder="email"><br>
+            <input required type="password" class="form-control" name="password" id="password" placeholder="password"><br>
+            <input required type="password" class="form-control" name="confirmpass" id="confirmpass" placeholder="confirmpass"><br>
+            <br>
+            <button type="submit" class="btn btn-block btn-primary">save</button>
+        </form>
+        <a href="/">have account</a>
+    </div>
+    <!-- ใช้ locals.ตัวแปร ตอนที่ส่งมาเวลามี error หรือ มีการ redirect -->
+    <% if(locals.invalid){ %>
+        <p style="color:red"><%= invalid %></p>
+            <%}%>
+</body>
+</html>

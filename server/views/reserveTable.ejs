@@ -1,0 +1,73 @@
+<html>
+<% include partials/cdn.ejs %>
+
+    <head>
+        <title></title>
+        <style>
+            .center {
+                border: 3px solid green;
+                padding: 10px;
+            }
+            
+            .table {
+                margin: auto;
+                width: 100%;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="container center">
+            <img src="images/img_another/restaurant_seat.png" alt="">
+        </div><br><br>
+        <div class="container center " style="padding-left: 20px;">
+            <form action="/booking/reserved" class="table">
+                <%for(var i=1;i<56;i++){%>
+
+                    <button type="button" class="btn btn-success btn-lg modal_show" id="table<%= i %>" value="table<%= i %>" data-toggle="modal" data-target="#myModal"><%= i %></button>
+                    <!-- ปัญหาตรงนี้คือเราไม่ได้เตรียมจำนวนของโต๊ะในร้าน ไว้ใน db จริงๆ น่าจะรันตามจำนวนโต๊ะที่เตรียมไว้ใน db ค่าที่ส่งไปก็เอาไป update ใน db-->
+                    <%if(i%10==0){%>
+                        <br><br>
+                        <%}}%>
+            </form>
+        </div>
+        <br>
+        <br>
+        <div class="container">
+            <div style="border:3px green solid; padding:10px;" id="modal">
+                <button class="float-right btn btn-danger" id="close">&times;</button>
+                <form action="/booking/booked" method="POST" class="form-group">
+                    <label for="table id">Table Number</label>
+                    <input type="text" name="seatNumber" id="tableId" class="form-control" readonly>
+                    <label for="Booking Name">Booking Name</label>
+                    <input type="text" name="bookingName" id="bookingName" class="form-control" required>
+                    <label for="Phone numder">Phone numder</label>
+                    <input type="text" name="phoneNumber" id="phoneNumber" class="form-control" required><br>
+                    <button class="btn btn-block btn-success">Book</button>
+                </form>
+            </div>
+        </div>
+        <div class="container">
+            <a href="/" class="btn btn-block btn-danger">Back</a>
+        </div>
+        <!-- <div class="container" style="background-color: brown;">
+            <%for(var i in locals.bookingData){%>
+                <p>
+                    <%=bookingData[i].status%>
+                </p>
+                <%}%>
+        </div> -->
+        <script>
+            $(document).ready(() => {
+                $("#modal").hide()
+                $(".modal_show").click((event) => {
+                    $("#modal").fadeIn(1000)
+                    document.getElementById("tableId").value = event.target.id
+                })
+            })
+        </script>
+
+    </body>
+
+</html>

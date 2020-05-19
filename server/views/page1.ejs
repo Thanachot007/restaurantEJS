@@ -1,0 +1,25 @@
+<html>
+    <% include partials/cdn.ejs %> 
+    <body>
+        <h1>Page 1</h1>
+        <% if (!session.usernameSession){%>
+            <!-- <p>don't have session</p> -->
+            <script>
+                var answer = confirm("Please Login.")
+                window.location.href = '/registration/logout'               
+            </script>
+
+        <%}%>
+       <h1><%= session.usernameSession %></h1> 
+    <%if(session.statusUpload == "true"){%>
+       <a href="#">Update History</a><br>
+    <%}else{%>
+        <a href="/page2">Add History</a><br>
+        <%}%>
+    <a href="/history">My History</a><br>
+    <a href="/food">See List of Food</a>
+    <div class="row">
+    <a href="/registration/logout" class="btn  btn-danger">Logout</a>
+</div>    
+</body>
+</html>

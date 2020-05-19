@@ -1,0 +1,42 @@
+<html>
+
+<head>
+  <% include partials/cdn.ejs%>
+  <title></title>
+</head>
+
+<body>
+  <% if(!session.usernameSession){%>
+  <p>don't have session</p>
+  <script>
+    var answer = confirm("Please Login.")
+    window.location.href = '/registration/logout'    
+  </script>
+  <% }else{ %>  
+  <div class="container">
+      <div class="card" style="width: 18rem;">
+        <% if(history.profile_images){ %>
+
+  <img src="/images/profile_images/<%= history.profile_images %>" class="card-img-top" />
+  <%} else { %>
+  <img src="/images/profile_images/males.png" class="card-img-top" />
+  <% } %>
+  <div class="card-body">
+    <p class="card-text">
+      <%= history.color %> <br /><%= history.food %> <br />
+      <%=history.sport %> <br />
+      <%= history.faculty %> <br />
+      <%= history.department %> <br />
+      <form action="/history/uploadImage" class="form-group" method="POST" enctype="multipart/form-data">
+        profile image : <input type="file" name="profile_img" id="profile_img" class="form-control"><br>
+        <button type="submit" class="btn btn-block btn-success">upload</button>
+      </form>
+    </p>
+  </div>
+  </div>
+  <a href="/page1" class="btn btn-danger">Back</a>
+  </div>
+  <%}%>
+</body>
+
+</html>

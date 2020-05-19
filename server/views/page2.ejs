@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <% include partials/cdn.ejs %>
+    <title></title>
+    <style>
+        body {
+            background: linear-gradient(75deg, #1c92d2 50%, #f2fcfe 50%);
+            font-size: 0.55cm;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to page 2</h1>
+        <form action="/page2/savehistory/" method="post" class="form-group" enctype="multipart/form-data">
+            <input type="hidden" name="username" id="username" value=<%=session.usernameSession%>>
+            <input type="hidden" name="email" id="email" value=<%=session.emailSession%>>
+
+            color : <input required type="text" name="color" id="color" class="form-control">
+            food : <input required type="text" name="food" id="food" class="form-control">
+            sport : <input required type="text" name="sport" id="sport" class="form-control">
+            faculty : <input required type="text" name="faculty" id="faculty" class="form-control">
+            dapartment : <input required type="text" name="department" id="department" class="form-control">
+            <br>
+            <button type="submit" class="btn btn-block btn-success">Save Data</button>
+        </form>
+        <% if(locals.status){%>
+            <p style="color: yellow;"><%=locals.status%></p>
+        <%}%>
+
+<a href="/page1" class="btn btn-danger">back</a>
+</div>
+    </body>
+</html>

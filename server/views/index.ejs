@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include partials/cdn.ejs %>
+        <title>login</title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <style>
+            body {
+                background: #d9a7c7;
+                /* fallback for old browsers */
+                background: -webkit-linear-gradient(to right, #fffcdc, #d9a7c7);
+                /* Chrome 10-25, Safari 5.1-6 */
+                background: linear-gradient(to right, #fffcdc, #d9a7c7);
+                /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            }
+        </style>
+</head>
+
+<body>
+    <h1>Login Page</h1><br>
+    <div class="container">
+        <form action="/registration/checklogin" method="post" class="form-group">
+            <input type="hidden" name="_csrf" value=<%=csrfToken%>> Username : <input type="text" class="form-control" name="username" id="username"><br> Password : <input type="password" class="form-control" name="password" id="password"><br>
+            <button class="btn btn-block btn-primary" type="submit">Login</button>
+            <% if(locals.err){ %>
+                <p style="color:red;">
+                    <%= locals.err %>
+                </p>
+                <%}%>
+        </form>
+    </div>
+    <div class="container">
+        <a href="/registration" class="btn btn-warning btn-xs btn-block">don't have account</a>
+        <a href="/food" class="btn btn-success btn-xs btn-block">go to food</a>
+    </div><br><br>
+    <div class="container">
+
+        <div class="card" style="width: 16rem;">
+            <img src="images/img_another/laptop.png" class="card-img-top" height="150">
+            <div class="card-body">
+                <h5 class="card-title">Reserve a table</h5>
+                <p class="card-text">You can online reserve a table here </p>
+                <a href="/booking" class="btn btn-primary ">reserve a table</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
